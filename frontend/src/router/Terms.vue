@@ -1,6 +1,5 @@
 <template>
-	<div class="page_terms__wrapper page__wrapper">
-		<div class="terms_header__wrapper"><Logo /></div>
+	<Intro>
 		<div class="terms_content__wrapper">
 			<h2>Общие положения</h2>
 			<p>Регистрируясь на данном ресурсе Вы даете свое согласие на сбор, обработку, хранение и продажу третьим лицам вашей персональной информации.</p>
@@ -12,34 +11,28 @@
 			<p>Отправляя личные фотографии будьте готовы к тому, что они могут стать достоянием общественности.</p>
 			<p>Строго говоря, мы вообще рекомендуем этого не делать.</p>
 		</div>
-	</div>
+	</Intro>
 </template>
 
 <script>
-import Logo from '@/components/litt/Logo.vue';
+import Intro from "@/components/layouts/Intro.vue";
 
 export default {
-	components: {
-		Logo,
-	}
+	components: { Intro },
 }
 </script>
 
 <style lang="scss">
 	@import "@/assets/vars.scss";
-	.page_terms__wrapper {
-		background: $pinkGradient;
-		.terms_header__wrapper { padding: 20px 30px; }
-		.terms_content__wrapper {
-			width: 80%;
-			margin: 0 auto;
+	.terms_content__wrapper {
+		width: 80%;
+		margin: 0 auto;
+		margin-top: 50px;
+		color: $white;
+		font-weight: 600;
+		h2 {
 			margin-top: 50px;
-			color: $white;
-			font-weight: 600;
-			h2 {
-				margin-top: 50px;
-				&:first-child { margin-top: 0; }
-			}
+			&:first-child { margin-top: 0; }
 		}
 	}
 </style>
