@@ -2,8 +2,8 @@
 	<div class="layout__wrapper page__wrapper">
 		<div class="header__wrapper">
 			<div class="icon"><Logo /></div>
-			<div class="nav-btn flex-left usual">О нас</div>
-			<div class="nav-btn special">Вход</div>
+			<div class="nav-btn flex-left usual" @click="$router.push('/about')">О нас</div>
+			<div class="nav-btn special" @click="$router.push('/auth')">Вход</div>
 		</div>
 		<div class="content__wrapper">
 			<slot />
@@ -11,6 +11,9 @@
 		<div class="footer__wrapper">
 			<div>&copy; matcha 2021-{{ new Date().getFullYear() }} by <a href="https://profile.intra.42.fr/users/ccharmai" target="_blank">ccharmai</a></div>
 			<div><router-link to="/terms">Правила использования</router-link></div>
+		</div>
+		<div class="prefetch">
+			<img src="../../assets/img/main-page.png" >
 		</div>
 	</div>
 </template>
@@ -62,10 +65,11 @@ export default {
 			padding: 7px 15px;
 			color: $white;
 			font-size: 0.9em;
-			a { color: $grey; }
+			a { color: #7d0014; }
 			display: flex;
 			justify-content: space-between;
 		}
 		.content__wrapper { flex-grow: 1; }
+		.prefetch { display: none; }
 	}
 </style>
