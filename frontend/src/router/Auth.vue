@@ -1,8 +1,8 @@
 <template>
 	<Intro>
 		<div class="auth_content">
-			<div class="login_block auth_block animate__animated animate__backInDown">
-				<SignIn :info="signIn"/>
+			<div class="login_block auth_block animate__animated animate__backInDown" ref="loginBlock">
+				<SignIn @enter="enter()" />
 			</div>
 		</div>
 	</Intro>
@@ -18,9 +18,13 @@ export default {
 		Intro,
 		SignIn,
 	},
-	data() {return {
-		signIn: { login: '', password: '' },
-	}},
+	methods: {
+		enter() {
+			this.$refs.loginBlock.classList.remove('animate__backInDown');
+			this.$refs.loginBlock.classList.add('animate__backOutUp');
+			setTimeout(() => { this.$router.push('/') }, 700);
+		},
+	},
 }
 </script>
 
