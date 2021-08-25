@@ -1,22 +1,29 @@
 <template>
-	<div class="auth_sign_in__wrapper ">
+	<div class="auth_sign_up__wrapper ">
 		<div class="first login-block" v-show="currentStep == 1">
 			<div class="logo"><img src="../../assets/img/icon.png" /></div>
-			<div class="header">Вход</div>
+			<div class="header">Регистрация</div>
 			<div class="form">
 				<div class="input-group">
 					<div class="title">Логин</div>
 					<div class="input"><input type="text" v-model="login"></div>
 				</div>
 				<div class="input-group">
+					<div class="title">Имя</div>
+					<div class="input"><input type="text" v-model="name"></div>
+				</div>
+				<div class="input-group">
+					<div class="title">Фамилия</div>
+					<div class="input"><input type="text" v-model="lastname"></div>
+				</div>
+				<div class="input-group">
 					<div class="title">Пароль</div>
 					<div class="input"><input type="password" v-model="password"></div>
 				</div>
 			</div>
-			<div class="login-btn" @click="loginClick()">Войти</div>
+			<div class="login-btn">Создать аккаунт</div>
 			<div class="help-tools">
-				<div @click="$emit('reg')">Нет аккаунта?</div>
-				<div>Забыл пароль?</div>
+				<div @click="$emit('log')">Уже зарегистрирован?</div>
 			</div>
 		</div>
 		<div class="second login-block" v-show="currentStep == 2">
@@ -37,6 +44,8 @@ export default {
 	data() {return {
 		currentStep: 1,
 		login: '',
+		name: '',
+		lastname: '',
 		password: '',
 		// 0 means loading, 1 means ok, -1 means error
 		status: 0,
@@ -57,6 +66,7 @@ export default {
 					setTimeout(() => { this.currentStep = 1; this.status = 0; }, 800);
 				}
 			}, 1000);
+			//setTimeout(() => { this.$emit('enter') }, 500);
 		},
 	},
 }
@@ -64,7 +74,7 @@ export default {
 
 <style lang="scss">
 	@import "@/assets/vars.scss";
-	.auth_sign_in__wrapper {
+	.auth_sign_up__wrapper {
 		width: 100%;
 		height: 100%;
 		.logo {
@@ -80,11 +90,11 @@ export default {
 			height: 100%;
 			display: flex;
 			flex-direction: column;
-			justify-content: space-evenly;
+			justify-content: space-around;
 		}
 		.input-group {
-			.input { flex-basis: 70%; width: 70%; }
-			margin-top: 15px;
+			.input { flex-basis: 65%; width: 65%; }
+			margin-top: 10px;
 		}
 		.help-tools {
 			margin-top: 20px;

@@ -5,7 +5,7 @@
 			<div class="nav-btn flex-left usual" @click="$router.push('/about')">О нас</div>
 			<div class="nav-btn special" @click="$router.push('/auth')">Вход</div>
 		</div>
-		<div class="content__wrapper">
+		<div class="content__wrapper" :class="{ 'overflow': currentPage == 'Terms' || currentPage == 'About' }">
 			<slot />
 		</div>
 		<div class="footer__wrapper">
@@ -23,6 +23,11 @@ import Logo from '@/components/shared/Logo.vue';
 
 export default {
 	components: { Logo },
+	computed: {
+		currentPage() {
+			return this.$route.name;
+		}
+	},
 }
 </script>
 
@@ -69,7 +74,10 @@ export default {
 			display: flex;
 			justify-content: space-between;
 		}
-		.content__wrapper { flex-grow: 1; }
+		.content__wrapper {
+			flex-grow: 1;
+			&.overflow { overflow: scroll; }
+		}
 		.prefetch { display: none; }
 	}
 </style>
