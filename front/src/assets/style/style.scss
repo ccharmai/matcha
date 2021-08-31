@@ -1,0 +1,28 @@
+@import url("../fonts/nunito/nunito.scss");
+@import './vars.scss';
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  height: 100%;
+  background: $pinkGradient;
+}
+
+#app {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-size: 18px;
+  * {
+    box-sizing: border-box;
+    user-select: none;
+    font-family: Nunito, Avenir, Arial, sans-serif;
+  }
+}
+
+input[type="text"],
+input[type="password"] {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: Nunito, Avenir, Arial, sans-serif;
+}
