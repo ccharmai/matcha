@@ -1,20 +1,19 @@
 <template>
   <div class="root__wrapper">
-    <Imp v-model="line" placeholder="abc" />
+    <div class="header"><TheHeader /></div>
+    <div class="content"><router-view /></div>
+    <div class="footer"><TheFooter /></div>
   </div>
 </template>
 
 <script>
-import Imp from '@/components/Shared/Inp.vue';
+import TheHeader from '@/components/Layout/TheHeader.vue';
+import TheFooter from '@/components/Layout/TheFooter.vue';
 
 export default {
   components: {
-    Imp,
-  },
-  data() {
-    return {
-      line: 'abcd',
-    };
+    TheHeader,
+    TheFooter,
   },
 };
 </script>
@@ -22,6 +21,12 @@ export default {
 <style lang="scss">
   .root__wrapper {
     height: 100%;
-    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    .content {
+      flex-grow: 1;
+      overflow: auto;
+      overflow-x: hidden;
+    }
   }
 </style>

@@ -19,8 +19,8 @@ module.exports = {
     'no-debugger': 'off',
   },
 
-  'extends': [
+  extends: [
     'plugin:vue/essential',
-    '@vue/airbnb'
-  ]
+    '@vue/airbnb',
+  ],
 };
