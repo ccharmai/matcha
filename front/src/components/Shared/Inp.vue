@@ -39,7 +39,7 @@ export default {
   @import '@/assets/style/vars.scss';
   .inp__wrapper {
     width: 100%;
-    margin-top: 35px;
+    margin-top: 25px;
     .inp__compose {
       position: relative;
     }

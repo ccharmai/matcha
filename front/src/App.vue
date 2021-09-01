@@ -20,6 +20,9 @@ export default {
     TheHeader,
     TheFooter,
   },
+  created() {
+    this.$store.dispatch('initAuth');
+  },
 };
 </script>
 

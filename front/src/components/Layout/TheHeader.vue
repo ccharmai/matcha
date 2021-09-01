@@ -2,7 +2,17 @@
   <div class="layout_the_header__wrapper">
     <div class="logo"><Logo /></div>
     <template v-if="user.auth">
-      <div class="controls">Авторизован</div>
+      <div class="controls">
+        <div>
+          <ExpandBlock :text="user.name">
+            <div class="menu">
+              <div class="menu-item">Перейти к анкетам</div>
+              <div class="menu-item">Настройки профиля</div>
+              <div class="menu-item exit" @click="logout()">Выход</div>
+            </div>
+          </ExpandBlock>
+        </div>
+      </div>
     </template>
     <template v-if="!user.auth">
       <div class="controls">
@@ -15,14 +25,21 @@
 
 <script>
 import Logo from '@/components/Layout/Logo.vue';
+import ExpandBlock from '@/components/Shared/ExpandBlock.vue';
 
 export default {
   components: {
     Logo,
+    ExpandBlock,
   },
   computed: {
     user() {
       return this.$store.getters.getUser;
+    },
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch('logout');
     },
   },
 };
@@ -57,6 +74,25 @@ export default {
           &:hover {
             background: #d3d3d33b;
           }
+        }
+      }
+    }
+    .menu {
+      color: $white;
+      font-weight: 600;
+      width: 100%;
+      font-size: 0.9em;
+      .menu-item {
+        text-align: center;
+        white-space: nowrap;
+        cursor: pointer;
+        padding: 5px;
+        border-bottom: 2px solid #c3c3c33b;
+        &:last-child {
+          border-bottom: none;
+        }
+        &.exit {
+          color: #9c0202;
         }
       }
     }
